@@ -17,6 +17,7 @@ function requestFunction() {
         } else {
             console.log("error");
         }
+        return array;
     };
     http.open("POST", "/findword", true);
     http.send(input);
