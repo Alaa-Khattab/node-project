@@ -5,7 +5,7 @@ function parseBody(req,callback) {
     body += data;
   });
   req.on('end', function() {
-    callback(undefined,body);
+    callback(undefined,qs.parse(body));
   });
 }
 module.exports = {
