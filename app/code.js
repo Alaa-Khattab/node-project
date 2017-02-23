@@ -1,14 +1,11 @@
-var fs = require('fs');
-var text = fs.readFileSync(__dirname + '/../words.txt', 'utf8');
+var final = require('./textfile.js')
+console.log(final);
 var utils = require('../utils.js');
 var result, shortresult,lowercaseInput,lowercaseElm;
 
 module.exports = function(req, res) {
     utils.parseBody(req, function(err, body) {
-        var input = Object.keys(body)[0];
-        
-        var final = text.split('\n');
-        
+        var input = Object.keys(body)[0];        
         result = final.filter(function(elm) {
             if(typeof (input) !== "undefined"){
                 lowercaseInput = input.toLowerCase();
