@@ -1,6 +1,5 @@
 var final = require('./textfile.js')
-console.log(final);
-var utils = require('../utils.js');
+var utils = require('../app/utils.js');
 var result, shortresult,lowercaseInput,lowercaseElm;
 
 module.exports = function(req, res) {
