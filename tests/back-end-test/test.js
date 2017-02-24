@@ -1,6 +1,6 @@
 var shot = require('shot');
 var test = require('tape');
-var mainHandler = require('/home/alaa/Desktop/my-node-project/index.js');
+var mainHandler = require('../../index.js');
 test('GET /: should return form.html', function(t) {
     shot.inject(mainHandler, { method: 'GET', url: '/' }, function(res) {
         var indexOf = res.payload.indexOf('input');
