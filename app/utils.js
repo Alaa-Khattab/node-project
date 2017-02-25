@@ -13,22 +13,26 @@ function parseBody(req, callback) {
 }
 
 function processing(body, callback) {
-
     input = Object.keys(body)[0];
-    result = final.filter(function(elm) {
-        if (typeof(input) !== "undefined") {
-            lowercaseInput = input.toLowerCase();
-        }
-        lowercaseElm = elm.toLowerCase();
-        return lowercaseElm >= lowercaseInput;
-    });
-    shortresult = result.slice(0, 6);
-    callback(undefined, JSON.stringify(shortresult));
+    if (/^[a-z]+$/i.test(input) ) {
+        result = final.filter(function(elm) {
+            if (typeof(input) !== "undefined") {
+                lowercaseInput = input.toLowerCase();
+            }
+            lowercaseElm = elm.toLowerCase();
+            return lowercaseElm >= lowercaseInput;
+        });
+        shortresult = result.slice(0, 6);
 
+    } else {
+        shortresult = [];
+
+    }
+    callback(undefined, JSON.stringify(shortresult));
 }
+
 module.exports = {
     parseBody: parseBody,
     processing: processing
 
 }
-  

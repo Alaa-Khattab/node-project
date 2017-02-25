@@ -26,9 +26,51 @@ test('GET /requestjs.js: should return request.js file', function(t) {
     });
 });
 test('POST /findword: should return an array of specific words as a response of the search', function(t) {
-    shot.inject(mainHandler, { method: 'POST', url: '/findword' }, function(res) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword'}, function(res) {
         var result = JSON.parse(res.payload);
         t.equal(Object.prototype.toString.call(result), '[object Array]', 'got an array as a response');
+        t.equal(res.statusCode, 200, 'got 200 status code');
+        t.end();
+    });
+});
+test('POST /findword: with e.g. input = "b"  should return [ B, b, ba, baa, baahling, Baal ]', function(t) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword' , payload : "b"}, function(res) {
+        var result = JSON.parse(res.payload);
+        t.deepEqual(result, [ 'B', 'b', 'ba', 'baa', 'baahling', 'Baal' ], 'got an empty array as a response');
+        t.equal(res.statusCode, 200, 'got 200 status code');
+        t.end();
+    });
+});
+test('POST /findword: with input as a number should return an empty array ', function(t) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword' , payload : "2"}, function(res) {
+        var result = JSON.parse(res.payload);
+        t.deepEqual(result, [], 'got an empty array as a response');
+        t.equal(res.statusCode, 200, 'got 200 status code');
+        t.end();
+    });
+});
+
+test('POST /findword: with input as a special character should return an empty array ', function(t) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword' , payload : "@"}, function(res) {
+        var result = JSON.parse(res.payload);
+        t.deepEqual(result, [], 'got an empty array as a response');
+        t.equal(res.statusCode, 200, 'got 200 status code');
+        t.end();
+    });
+});
+test('POST /findword: with empty input should return an empty array ', function(t) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword' , payload : " "}, function(res) {
+        var result = JSON.parse(res.payload);
+        t.deepEqual(result, [], 'got an empty array as a response');
+        t.equal(res.statusCode, 200, 'got 200 status code');
+        t.end();
+    });
+});
+
+test('POST /findword: with input did not include in words.txt file should return an empty array ', function(t) {
+    shot.inject(mainHandler, { method: 'POST', url: '/findword' , payload : "apple watch "}, function(res) {
+        var result = JSON.parse(res.payload);
+        t.deepEqual(result, [], 'got an empty array as a response');
         t.equal(res.statusCode, 200, 'got 200 status code');
         t.end();
     });
