@@ -22,3 +22,6 @@ function requestFunction() {
     http.open("POST", "/findword", true);
     http.send(input);
 }
+
+    
+
