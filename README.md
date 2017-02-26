@@ -2,9 +2,7 @@
 
 
 # [![Build Status](https://travis-ci.org/Alaa-Khattab/node-project.svg?branch=master)](https://travis-ci.org/Alaa-Khattab/node-project)
-
 [![Code Climate](https://codeclimate.com/github/Alaa-Khattab/node-project/badges/gpa.svg)](https://codeclimate.com/github/Alaa-Khattab/node-project)
-
 [![Test Coverage](https://codeclimate.com/github/Alaa-Khattab/node-project/badges/coverage.svg)](https://codeclimate.com/github/Alaa-Khattab/node-project/coverage)
 
 # [widget](https://node-project-bootcamp.herokuapp.com/)
