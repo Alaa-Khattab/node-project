@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node tests/back-end-test/test.js",
-    "cov": "./node_modules/.bin/istanbul cover tests/back-end-test/test.js"
+    "test": "node tests/back-end-test/index.js",
+    "cov": "./node_modules/.bin/istanbul cover tests/back-end-test/index.js"
   },
   "repository": {
     "type": "git",
