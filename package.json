@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node tests/back-end-test/test.js",
+    "cov": "./node_modules/.bin/istanbul cover tests/back-end-test/test.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,9 @@
   "homepage": "https://github.com/snocks/autocomplete-website-widget#readme",
   "dependencies": {
     "shot": "^3.4.0",
-    "tabe": "^1.0.4"
+    "tape": "^4.6.3"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5"
   }
 }
